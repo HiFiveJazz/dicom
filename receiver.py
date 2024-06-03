@@ -1,6 +1,5 @@
 import socket
 import json
-import os
 from blockchain import Blockchain
 
 def save_file(file_content, filename='received_file.txt'):
@@ -13,7 +12,7 @@ def start_server(host='0.0.0.0', port=12345):
     server_socket.listen(1)
     print(f"Server listening on {host}:{port}")
     
-    chain = Blockchain()
+    chain = Blockchain(difficulty=4)
 
     while True:
         client_socket, client_address = server_socket.accept()
