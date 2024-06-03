@@ -1,9 +1,17 @@
 import socket
+import os
 
-def send_message(host, port, message):
+def send_file(host, port, file_path):
+    if not os.path.exists(file_path):
+        print("File does not exist.")
+        return
+
+    with open(file_path, 'r') as file:
+        file_content = file.read()
+
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))
-    client_socket.sendall(message.encode())
+    client_socket.sendall(file_content.encode())
     client_socket.close()
 
 if __name__ == "__main__":
@@ -11,7 +19,8 @@ if __name__ == "__main__":
     target_port = 12345
     
     while True:
-        message = input("Enter the message to send (or type 'exit' to quit): ")
-        if message.lower() == 'exit':
+        file_path = input("Enter the file path to send (or type 'exit' to quit): ")
+        if file_path.lower() == 'exit':
             break
-        send_message(target_host, target_port, message)
+        send_file(target_host, target_port, file_path)
+
