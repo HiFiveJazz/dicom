@@ -9,7 +9,9 @@ def send_message(host, port, message):
 if __name__ == "__main__":
     target_host = "192.168.0.210"  # Replace with the server's IP address
     target_port = 12345
-    message = "Hello, this is a test message."
-    send_message(target_host, target_port, message)
-
-
+    
+    while True:
+        message = input("Enter the message to send (or type 'exit' to quit): ")
+        if message.lower() == 'exit':
+            break
+        send_message(target_host, target_port, message)
