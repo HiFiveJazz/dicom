@@ -105,7 +105,7 @@ class Blockchain:
         return ledger
 
 if __name__ == "__main__":
-    blockchain = Blockchain(difficulty=4)
+    blockchain = Blockchain(difficulty=30)
     blockchain.add_block("First message")
     blockchain.add_block("Second message")
     blockchain.add_block("Third message")
