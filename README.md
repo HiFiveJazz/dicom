@@ -1,7 +1,5 @@
 # Block Chain Messaging System
 
-This project is a proof of concept for Bioengineering 193 at UC San Diego. The code works a basic Peer-to-Peer blockchain messaging system reminiscent of how Radiologists send DICOM files between each other. Implementing a blockchain system allows for enhanced cybersecurity for Radiologists working there. 
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -11,10 +9,9 @@ This project is a proof of concept for Bioengineering 193 at UC San Diego. The c
 - [Contact](#contact)
 
 ## Introduction
+This project is a proof of concept for Bioengineering 193 at UC San Diego. It demonstrates a basic Peer-to-Peer blockchain messaging system, similar to how Radiologists transfer DICOM files. By implementing a blockchain system, we aim to enhance cybersecurity for Radiologists.
 
-## Introduction
-
-This project demonstrates a simple client-server application for sending text files over a network. The server, written in Python, can send a text file to a client, which receives and displays the content. The instructions below will guide you through setting up and running the project on two computers: one acting as the server and the other as the client.
+This project creates a basic client-server application for sending text files over a network with a ledger system similar to that of Bitcoin. The server, written in Python, can send a text file to a client, which receives and displays the content. The instructions below will guide you through setting up and running the project on two computers: one acting as the server and the other as the client.
 
 The project is divided into several steps:
 
@@ -24,47 +21,46 @@ The project is divided into several steps:
 
 ## Installation
 ***Clone the repository:***
-```md
-https://github.com/HiFiveJazz/dicom.git
+```bash
+git clone https://github.com/HiFiveJazz/dicom.git
 ```
 ## Usage
 
 In order to send messages via the block chain, 
 - Ensure both the both devices are connected to the same network (this code uses Peer-to-Peer protocol)
-- Designate one computer as the client and the other as the server.
+- Designate one computer as the **Client** and the other as the **Server**.
 
 ### Step 1: Find the local IPv4 Address of the Client Computer
 
-macOS Example:
+**macOS Example:**
 
-
-```md
+```bash
 ifconfig
 ```
 Search for the IPv4 address shown after en0:
 
-```
+```bash
 en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
 	options=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
 	ether f8:4d:89:63:de:0f
 	inet6 fe80::472:9e9:6f51:55df%en0 prefixlen 64 secured scopeid 0xe 
-	inet **192.168.0.210** netmask 0xffffff00 broadcast 192.168.0.255
+	inet 192.168.0.210 netmask 0xffffff00 broadcast 192.168.0.255
 	inet6 2600:8801:8101:9800:859:c401:d449:459b prefixlen 64 autoconf secured 
 	inet6 2600:8801:8101:9800:6419:a335:9c55:755b prefixlen 64 autoconf temporary 
 	inet6 2600:8801:8101:9800::de98 prefixlen 64 dynamic 
 	nd6 options=201<PERFORMNUD,DAD>
 	media: autoselect
-	status: <strong>active</strong>
+	status: active
 ```
 
-IPv4 Address = 192.168.0.210
+*IPv4 Address = 192.168.0.210*
 
-Linux Example:
+**Linux Example:**
 
-```md
+```bash
 nmcli -p device show
 ```
-```
+```bash
 ===============================================================================
                             Device details (enp6s0)
 ===============================================================================
@@ -87,7 +83,7 @@ WIRED-PROPERTIES.CARRIER:               on
 IP4.ADDRESS[1]:                         192.168.0.220/24
 ```
 
-IPv4 Address = 192.168.0.220
+*IPv4 Address = 192.168.0.220*
 
 ### Step 2: On the Server Computer, replace Line 18 in `sender.py` with the IPv4 Address of the Client
 ```python
@@ -130,3 +126,6 @@ hello.txt
 ```
 
 You're done!
+
+## Contact
+Feel free to contact me at jasmeet.bhatia.us@gmail.com if you have any questions!
