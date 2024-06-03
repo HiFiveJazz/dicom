@@ -12,7 +12,7 @@ def start_server(host='0.0.0.0', port=12345):
     server_socket.listen(1)
     print(f"Server listening on {host}:{port}")
     
-    chain = Blockchain(difficulty=30)
+    chain = Blockchain(difficulty=4)
 
     while True:
         client_socket, client_address = server_socket.accept()

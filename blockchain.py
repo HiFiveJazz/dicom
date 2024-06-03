@@ -32,7 +32,7 @@ class Block:
         return hashlib.sha256(block_string).hexdigest()
 
 class Blockchain:
-    def __init__(self, difficulty=30):
+    def __init__(self, difficulty=4):
         self.chain = []
         self.difficulty = difficulty
         self.create_genesis_block()
@@ -105,7 +105,7 @@ class Blockchain:
         return ledger
 
 if __name__ == "__main__":
-    blockchain = Blockchain(difficulty=30)
+    blockchain = Blockchain(difficulty=4)
     blockchain.add_block("First message")
     blockchain.add_block("Second message")
     blockchain.add_block("Third message")
