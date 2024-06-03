@@ -62,3 +62,25 @@ class Blockchain:
             print(f"Hash: {block.current_hash}")
             print("\n")
 
+    def get_ledger(self):
+        ledger = []
+        for block in self.chain:
+            ledger.append({
+                'index': block.index,
+                'previous_hash': block.previous_hash,
+                'timestamp': block.timestamp,
+                'data': block.data,
+                'hash': block.current_hash
+            })
+        return ledger
+
+if __name__ == "__main__":
+    blockchain = Blockchain()
+    blockchain.add_block("First message")
+    blockchain.add_block("Second message")
+    blockchain.add_block("Third message")
+
+    blockchain.display_chain()
+    print(f"Is chain valid? {blockchain.verify_chain()}")
+    print(json.dumps(blockchain.get_ledger(), indent=4))
+

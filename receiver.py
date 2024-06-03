@@ -1,4 +1,5 @@
 import socket
+import json
 from blockchain import Blockchain
 
 def start_server(host='0.0.0.0', port=12345):
@@ -19,6 +20,10 @@ def start_server(host='0.0.0.0', port=12345):
         chain.add_block(message)
         chain.display_chain()
         print(f"Is chain valid? {chain.verify_chain()}")
+        
+        # Print the entire ledger
+        ledger = chain.get_ledger()
+        print(json.dumps(ledger, indent=4))
 
         client_socket.close()
 
