@@ -18,7 +18,7 @@ def send_file(host, port, file_path):
             ssock.sendall(file_content.encode())
 
 if __name__ == "__main__":
-    target_host = "192.168.0.210"  # Replace with the server's IP address
+    target_host = "192.168.0.220"  # Replace with the server's IP address
     target_port = 12345
     
     while True:

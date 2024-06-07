@@ -1,0 +1,1 @@
+This is an example file being sent via this file to another computer! It is using Port 12345! In the future, the information being sent would be the information in the DICOM file!
