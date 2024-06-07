@@ -1,4 +1,5 @@
 import socket
+import ssl
 import os
 
 def send_file(host, port, file_path):
@@ -9,10 +10,12 @@ def send_file(host, port, file_path):
     with open(file_path, 'r') as file:
         file_content = file.read()
 
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((host, port))
-    client_socket.sendall(file_content.encode())
-    client_socket.close()
+    context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+    context.load_verify_locations('cert.pem')
+
+    with socket.create_connection((host, port)) as sock:
+        with context.wrap_socket(sock, server_hostname=host) as ssock:
+            ssock.sendall(file_content.encode())
 
 if __name__ == "__main__":
     target_host = "192.168.0.210"  # Replace with the server's IP address
