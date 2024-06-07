@@ -1,40 +1,26 @@
 import socket
-import json
-from blockchain import Blockchain
+import os
 
-def save_file(file_content, filename='received_file.txt'):
-    with open(filename, 'w') as file:
-        file.write(file_content)
+def send_file(host, port, file_path):
+    if not os.path.exists(file_path):
+        print("File does not exist.")
+        return
 
-def start_server(host='0.0.0.0', port=12345):
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((host, port))
-    server_socket.listen(1)
-    print(f"Server listening on {host}:{port}")
-    
-    chain = Blockchain(difficulty=4)
+    with open(file_path, 'r') as file:
+        file_content = file.read()
 
-    while True:
-        client_socket, client_address = server_socket.accept()
-        print(f"Connection from {client_address}")
-        file_content = client_socket.recv(65536).decode()
-        print(f"Received file content:\n{file_content}")
-        
-        # Add file content to blockchain
-        chain.add_block(file_content)
-        chain.display_chain()
-        print(f"Is chain valid? {chain.verify_chain()}")
-        
-        # Save the received file
-        save_file(file_content)
-        
-        # Print the entire ledger
-        ledger = chain.get_ledger()
-        print(json.dumps(ledger, indent=4))
-
-        client_socket.close()
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect((host, port))
+    client_socket.sendall(file_content.encode())
+    client_socket.close()
 
 if __name__ == "__main__":
-    start_server()
-
+    target_host = "192.168.0.210"  # Replace with the server's IP address
+    target_port = 12345
+    
+    while True:
+        file_path = input("Enter the file path to send (or type 'exit' to quit): ")
+        if file_path.lower() == 'exit':
+            break
+        send_file(target_host, target_port, file_path)
 
