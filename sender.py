@@ -27,7 +27,7 @@ def send_file(host, port, file_path, certfile='cert.pem'):
             ssock.sendall(file_content.encode())
 
 if __name__ == "__main__":
-    target_host = "192.168.0.220"  # Replace with the server's IP address
+    target_host = input("Input Server IP Address: \n") 
     target_port = 12345
     
     # Step 1: Request the cert.pem file from the receiver

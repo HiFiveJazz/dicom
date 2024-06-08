@@ -3,7 +3,7 @@ import ssl
 import json
 import os
 from blockchain import Blockchain
-import ipv4writer
+import network_handler 
 
 def save_file(file_content, filename='received_file.txt'):
     with open(filename, 'w') as file:
@@ -55,8 +55,8 @@ def start_server(host='0.0.0.0', port=12345):
 
 if __name__ == "__main__":
     
-    local_ip = ipv4writer.get_local_ipv4_address()
-    ipv4writer.write_ipv4_address_receiver(local_ip)
-    ipv4writer.generate_self_signed_cert()
+    local_ip = network_handler.get_local_ipv4_address()
+    network_handler.write_ipv4_address_receiver(local_ip)
+    network_handler.generate_self_signed_cert()
     start_server()
 
