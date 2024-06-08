@@ -2,16 +2,16 @@
 default_bits       = 2048
 distinguished_name = req_distinguished_name
 req_extensions     = req_ext
-x509_extensions    = v3_ca # The extentions to add to the self signed cert
+x509_extensions    = v3_ca # The extensions to add to the self-signed cert
+prompt             = no
 
 [req_distinguished_name]
-countryName                = Country Name (2 letter code)
-stateOrProvinceName        = State or Province Name (full name)
-localityName               = Locality Name (eg, city)
-organizationName           = Organization Name (eg, company)
-organizationalUnitName     = Organizational Unit Name (eg, section)
-commonName                 = Common Name (e.g. server FQDN or YOUR name)
-commonName_max             = 64
+countryName                = US
+stateOrProvinceName        = California
+localityName               = La Jolla
+organizationName           = UC San Diego
+organizationalUnitName     = Department of Bioengineering
+commonName                 = Jazz
 
 [req_ext]
 subjectAltName = @alt_names
@@ -21,3 +21,5 @@ subjectAltName = @alt_names
 
 [alt_names]
 IP.1   = 192.168.0.220
+
+
