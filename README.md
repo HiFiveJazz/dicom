@@ -30,7 +30,9 @@ In order to send messages via the block chain,
 - Ensure both the both devices are connected to the same network (this code uses Peer-to-Peer protocol)
 - Designate one computer as the **Client** and the other as the **Server**.
 
-### Step 1: Find the local IPv4 Address of the Client Computer
+### Step 1: Find Two Computers
+You need two computers, one to act as the receiving computer (server) and one to act as the sending computer (client). Alternatively, you could use set up a virtual machine on a single computer and attempt sending the message between the virtual machine and real computer, but this has not been tested.
+
 
 **macOS Example:**
 
