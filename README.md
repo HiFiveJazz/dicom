@@ -72,7 +72,7 @@ example.txt
 ```
 You're done!
 ## License
-This project uses the GNU License so do what you want, as long as it is open-source.
+This project uses the GNU GPLv3 License so do what you want, as long as it is open-source.
 
 ## Contact
 Feel free to contact me at jasmeet.bhatia.us@gmail.com if you have any questions!
